@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GDG Workshop</title>
+
+    <!-- Firebase compat libraries -->
+    <!-- It is important to have these here! --> 
+    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
+
+    <!-- FirebaseUI -->
+    <!-- It is important to have these here! --> 
+    <link rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/6.0.2/firebase-ui-auth.css" />
+    <script src="https://www.gstatic.com/firebasejs/ui/6.0.2/firebase-ui-auth.js"></script>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f7f7f7;
+            padding: 40px;
+            text-align: center;
+        }
+
+        #login-container {
+            max-width: 400px;
+            margin: 80px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        #site-content {
+            display: none;
+            margin-top: 150px;
+            font-size: 28px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- LOGIN UI -->
+    <div id="login-container">
+        <h2>Sign In</h2>
+        <div id="firebaseui-auth-container"></div>
+    </div>
+
+    <!-- CONTENT AFTER LOGIN -->
+    <div id="site-content">
+        Welcome to the GDG workshop! 🎉
+        <br><br>
+        <button onclick="firebase.auth().signOut()">Logout</button>
+    </div>
+
+
+    <script>
+        // Firebase config
+
+        //TODO: ADD YOUR FIREBASE CONFIG
+
+        //Links webpage to the firebase backend we created on the console
+
+        //TODO: INITIALIZE THE APP
+
+        //Firebase provides us UI for the login flow automatically, no setup on our part!
+        const ui = new firebaseui.auth.AuthUI(firebase.auth());
+
+        //singInFlow: popup avoids page reloads and provides a cleaner UI
+        //signInOptions: These determine what sign in options we want users to see
+        //For this workshop, we'll be using google and email
+        const uiConfig = {
+            signInFlow: "popup",
+            signInOptions: [
+                //TODO: ADD SIGN IN OPTIONS
+            ]
+        };
+
+        //This listens for any authentication changes
+        firebase.auth().onAuthStateChanged(user => {
+
+            //If the user is logged in, we hide the login box and display hidden site content
+            if (user) {
+
+                //TODO
+
+            } 
+            //Otherwise we hide the site content and make the login content visible
+            //We also start the firebase UI, inside the the login container
+            else {
+
+                //TODO
+
+            }
+        });
+    </script>
+
+</body>
+</html>
